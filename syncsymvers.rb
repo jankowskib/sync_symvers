@@ -83,7 +83,7 @@ File.open(options[:file], 'rb+') do |f|
 		#puts "TEST: #{data.name}: #{data.sum} => #{oldhashes[data.name]}\n" 
 		if oldhashes.has_key?(data.name) and oldhashes[data.name] != data.sum then
 			f.seek(-64, IO::SEEK_CUR)
-			puts "#{data.name}: #{data.sum.to_s(16)} => #{oldhashes[data.name].to_s(16)}"
+			puts "#{data.name}: #{data.sum} => #{oldhashes[data.name]}"
 			BinData::Uint32le.new(oldhashes[data.name]).write(f)
 			f.seek(60, IO::SEEK_CUR)
 		end
